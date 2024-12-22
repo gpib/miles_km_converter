@@ -1,16 +1,53 @@
-# This is a sample Python script.
+import tkinter
 
-# Press Shift+F10 to execute it or replace it with your code.
-# Press Double Shift to search everywhere for classes, files, tool windows, actions, and settings.
-
-
-def print_hi(name):
-    # Use a breakpoint in the code line below to debug your script.
-    print(f'Hi, {name}')  # Press Ctrl+F8 to toggle the breakpoint.
+def calculate():
+    if my_label.cget("text") == "Miles":
+        my_label_result.config(text = float(input.get())*1.609344)
+    else:
+        my_label_result.config(text=float(input.get()) * 0.621371192)
 
 
-# Press the green button in the gutter to run the script.
-if __name__ == '__main__':
-    print_hi('PyCharm')
+def switch():
+    # Zamiana tekstów etykiet
+    if my_label.cget("text") == "Miles":
+        my_label.config(text="Km")
+        my_label_2.config(text="Miles")
+    else:
+        my_label.config(text="Miles")
+        my_label_2.config(text="Km")
 
-# See PyCharm help at https://www.jetbrains.com/help/pycharm/
+window = tkinter.Tk()
+window.title("Miles kilometers converter")
+window.minsize(width=500, height=500)
+window.config(padx = 20, pady = 20)
+
+input = tkinter.Entry(width = 10)
+input.grid(column = 1, row = 0)
+
+my_label = tkinter.Label(text ="Miles")
+my_label.grid(column = 2, row = 0)
+my_label.config(padx = 5, pady = 5)
+
+my_label_equal = tkinter.Label(text ="is equal to")
+my_label_equal.grid(column = 0, row = 1)
+my_label_equal.config(padx = 5, pady = 5)
+
+my_label_result = tkinter.Label(text ="")
+my_label_result.grid(column = 1, row = 1)
+my_label_result.config(padx = 5, pady = 5)
+
+my_label_2 = tkinter.Label(text ="Km")
+my_label_2.grid(column = 2, row = 1)
+my_label_2.config(padx = 5, pady = 5)
+
+button = tkinter.Button(text = "Calculate", command = calculate)
+#button.pack()
+button.grid(column = 1, row = 2)
+button.config(padx = 5, pady = 5)
+
+button_switch = tkinter.Button(text = "Switch", command = switch)
+#button.pack()
+button_switch.grid(column = 2, row = 2)
+button_switch.config(padx = 5, pady = 5)
+
+window.mainloop()
